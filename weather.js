@@ -100,7 +100,7 @@ async function showPosition(position) {
 
 
     changeWeatherBackground(weatherData.current.weather_code);
-    changeWeatherBackground(114)
+    // changeWeatherBackground(114)
 
 
 
