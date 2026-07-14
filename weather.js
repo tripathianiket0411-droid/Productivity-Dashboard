@@ -55,8 +55,20 @@ async function showPosition(position) {
     let data = await response.json();
 
     console.log(data);
+    console.log(data.address);
 
-    city.innerText = `📍 ${data.address.city || data.address.town || data.address.village || data.address.hamlet || "Unknown"}`;
+    city.innerText = `📍 ${data.address.city ||
+        data.address.town ||
+        data.address.village ||
+        data.address.hamlet ||
+        data.address.suburb ||
+        data.address.municipality ||
+        data.address.city_district ||
+        data.address.neighbourhood ||
+        data.address.quarter ||
+        data.address.county ||
+        "Unknown"
+        }`;
 
     district.innerText = `🏙️ District: ${data.address.state_district || data.address.county || "Not Available"}`;
 
@@ -167,7 +179,7 @@ function changeWeatherBackground(weatherCode) {
 
 
 
-    if ([1, 2, 3, 45, 48].includes(weatherCode)) {
+    if ([ 3, 45, 48].includes(weatherCode)) {
 
         weatherBox.style.backgroundImage = "url('./Images/cloud.jpg')";
         return;
