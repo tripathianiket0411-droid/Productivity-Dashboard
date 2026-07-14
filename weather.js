@@ -100,7 +100,7 @@ async function showPosition(position) {
 
 
     changeWeatherBackground(weatherData.current.weather_code);
-    // changeWeatherBackground(114)
+    
 
 
 
@@ -114,14 +114,13 @@ getLocation();
 
 function changeWeatherBackground(weatherCode) {
 
-    const currentTime = new Date();   // ye add karo
+    const currentTime = new Date();  
     const hour = currentTime.getHours();
     
 
     const weatherBox = document.querySelector(".weather-box");
 
 
-    // Rain
     if ([51, 53, 55, 61, 63, 65, 80].includes(weatherCode)) {
 
         weatherBox.style.backgroundImage = "url('./Images/RAINING.webp')";
@@ -130,7 +129,7 @@ function changeWeatherBackground(weatherCode) {
     }
 
 
-    // Thunderstorm
+ 
     if (weatherCode === 95) {
 
         weatherBox.style.backgroundImage = "url('./Images/thunder-cluds.gif')";
@@ -139,7 +138,7 @@ function changeWeatherBackground(weatherCode) {
     }
 
 
-    // Cloudy
+  
     if ([1, 2, 3, 45, 48].includes(weatherCode)) {
 
         weatherBox.style.backgroundImage = "url('./Images/cloud.jpg')";
@@ -148,21 +147,20 @@ function changeWeatherBackground(weatherCode) {
     }
 
 
-    // Morning
+   
     if (hour >= 5 && hour < 12) {
 
         weatherBox.style.backgroundImage = "url('./Images/morning.jpg')";
 
     }
 
-    // Afternoon
     else if (hour >= 12 && hour < 18) {
 
         weatherBox.style.backgroundImage = "url('./Images/background.jpg')";
 
     }
 
-    // Night
+  
     else if (hour >= 18 || hour < 5) {
 
         weatherBox.style.backgroundImage = "url('./Images/night.jpg')";
