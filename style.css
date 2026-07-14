@@ -296,7 +296,7 @@ nav {
 #wind,
 #greeting {
 
-    color: #fff;
+    color: #f0e8e8;
     text-shadow: 0 2px 10px rgba(0, 0, 0, .9);
 
 }
@@ -309,7 +309,7 @@ nav {
 #greeting {
     font-size: 28px;
     font-weight: 600;
-    color: #7c6cff;
+    color: #070607;
     margin-bottom: 12px;
 }
 
@@ -669,26 +669,23 @@ nav {
     list-style: none;
     padding: 0;
     margin: 20px 0;
+
 }
 
 .task-card {
     width: 320px;
+    border: 1px solid rgba(2, 2, 2, 0.15);
 }
 
-/* 
-#taskList li {
-    display: flex;
-    flex: 0 0 320px;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    padding: 18px;
-    margin-bottom: 15px;
-    border-radius: 12px;
-    background: #f7f8fc;
-    border-left: 5px solid #4f46e5;
-    transition: .3s;
-} */
+.task-card h3{
+    color: black;
+}
+.task-card p{
+    color: black;
+}
+
+
+
 
 #taskList li:hover {
     transform: translateX(6px);
@@ -698,15 +695,15 @@ nav {
     flex: 1;
 }
 
-.task-info h4 {
+/* .task-info h4 {
     margin-bottom: 6px;
     font-size: 18px;
-}
+} */
 
-.task-info p {
+/* .task-info p {
     color: #0a0a0a;
     font-size: 14px;
-}
+} */
 
 .task-actions {
     display: flex;
@@ -733,6 +730,7 @@ nav {
 .delete-btn {
     background: #dc2626;
 }
+
 
 .task-actions button:hover {
     transform: scale(1.05);
@@ -862,6 +860,7 @@ nav {
 .notes-section {
     width: 100%;
     padding: 0 8% 50px;
+    /* border: 2px solid black; */
 }
 
 .notes-card {
@@ -1481,7 +1480,7 @@ footer {
 
 .note-item {
     background: rgba(255, 255, 255, .08);
-    border: 1px solid rgba(255, 255, 255, .15);
+    border: 5px solid rgba(20, 20, 20, 0.15);
     border-radius: 12px;
     padding: 15px;
     display: flex;
@@ -1491,7 +1490,7 @@ footer {
 }
 
 .note-item p {
-    color: #fff;
+    color: #0f0f0f;
     font-size: 15px;
     font-weight: 500;
     word-break: break-word;
@@ -2396,4 +2395,38 @@ footer {
     .input-box select {
         box-sizing: border-box;
     }
+}
+
+
+
+
+
+
+#newQuoteBtn {
+    margin-top: 20px;
+    padding: 12px 22px;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
+}
+
+#newQuoteBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(79, 70, 229, 0.45);
+}
+
+#newQuoteBtn:active {
+    transform: scale(0.97);
+}
+
+#newQuoteBtn:focus {
+    outline: 2px solid rgba(124, 58, 237, 0.5);
+    outline-offset: 3px;
 }

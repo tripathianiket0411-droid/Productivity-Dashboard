@@ -33,6 +33,8 @@ let savedNotes = document.getElementById("savedNotes");
 let minutesInput = document.querySelector("#minutesInput");
 let timer = document.querySelector("#timer");
 let todoOverlay = document.querySelector(".todo-overlay");
+
+let newQuoteBtn = document.getElementById("newQuoteBtn");
 let startBtn = document.querySelector("#startBtn");
 let pauseBtn = document.querySelector("#pauseBtn");
 let resetBtn = document.querySelector("#resetBtn");
@@ -134,6 +136,8 @@ function showQuote() {
 
 showQuote();
 
+newQuoteBtn.addEventListener("click", showQuote);
+
 function greet() {
     const hour = new Date().getHours();
 
@@ -216,7 +220,7 @@ let task = JSON.parse(localStorage.getItem("tasks")) || [];
 let taskUI = function (obj) {
 
     return `
-     <li class="task-card ${obj.completed ? "task-completed" : ""}">      
+     <div class="task-card ${obj.completed ? "task-completed" : ""}">      
 
         <div class="task-top">
             <span class="priority ${obj.priority.toLowerCase()}">
@@ -256,7 +260,7 @@ ${!obj.completed
 
 </div >
 
-    </li >
+    </div >
     `;
 };
 
