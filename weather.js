@@ -49,10 +49,18 @@ async function showPosition(position) {
     console.log("Longitude:", longitude);
 
     let response = await fetch(
-        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
+        `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`
     );
 
     let data = await response.json();
+
+    console.log(data);
+
+    city.innerText = `📍 ${data.address.city || data.address.town || data.address.village || data.address.hamlet || "Unknown"}`;
+
+    district.innerText = `🏙️ District: ${data.address.state_district || data.address.county || "Not Available"}`;
+
+    state.innerText = `🗺️ State: ${data.address.state || "Not Available"}`;
 
 
     let weatherResponse = await fetch(
@@ -69,13 +77,6 @@ async function showPosition(position) {
 
     wind.innerText = `🌬 Wind: ${weatherData.current.wind_speed_10m} km/h`;
 
-    city.innerText = `📍 ${data.city || data.locality}`;
-
-    district.innerText = `🏙️ District: ${data.locality || data.city || "Not Available"
-        }`;
-
-    state.innerText = `🗺️ State: ${data.principalSubdivision || "Not Available"
-        }`;;
     const weatherCodes = {
         0: "Clear Sky ☀️",
 
