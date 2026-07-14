@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Workspace</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <div class="logo">
+            <i class="ri-dashboard-fill"></i>
+            <h2>Productivity Dashboard</h2>
+        </div>
+
+        <div class="overlay-nav">
+
+            <button id="openGoalBtn" class="overlay-btn">
+                🎯 Goal
+            </button>
+
+            <button id="openTodoBtn" class="overlay-btn">
+                📋 Todo
+            </button>
+
+            <button id="openPomodoro" class="overlay-btn">
+                🍅 Timer
+            </button>
+
+            <button id="openNotesBtn" class="overlay-btn">
+                📝 Notes
+            </button>
+            <button id="openPlannerBtn" class="overlay-btn">
+                📅 Planner
+            </button>
+
+        </div>
+
+        <div class="nav-right">
+
+            <button id="themeBtn">
+                <i class="ri-moon-fill mode"></i>
+            </button>
+
+        </div>
+
+        <button id="menuBtn" class="menu-btn">
+            <i class="ri-menu-line"></i>
+        </button>
+
+    </nav>
+
+    <div class="info-section">
+
+        <!-- Left -->
+        <div class="weather-box">
+            <h1 id="temperature"></h1>
+            <h2 id="city"></h2>
+            <p id="district"></p>
+            <p id="state"></p> <span id="weatherCondition"></span>
+            <p id="humidity"></p>
+            <p id="wind"></p>
+            <h3 id="greeting"></h3>
+        </div>
+
+        <!-- Right -->
+        <div class="time-section">
+            <h1 id="clock"></h1>
+
+            <div class="calendar-box">
+                <h3 id="day"></h3>
+                <p id="month"></p>
+                <p id="year"></p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-text">
+
+
+            <h1>
+                Stay Focused.<br>
+                Stay Productive.
+            </h1>
+
+            <p>
+                Manage your tasks, monitor weather,
+                stay motivated with quotes and
+                improve your daily productivity.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ================= MOTIVATION QUOTE ================= -->
+
+    <section class="quote-section">
+
+        <div class="quote-card">
+
+
+
+            <p id="quote">
+                Loading motivational quote...
+            </p>
+
+            <span id="author"></span>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- Overlay -->
+    <div class="pomodoro-overlay">
+
+        <div class="pomodoro-wrapper">
+
+            <button id="closePomodoro">✖</button>
+
+            <section class="pomodoro-section">
+
+                <div class="pomodoro-card">
+
+                    <h2>🍅 Pomodoro Timer</h2>
+
+                    <input type="number" id="minutesInput" placeholder="Enter Minutes (e.g. 25)" min="1">
+
+                    <h1 id="timer">25:00</h1>
+
+                    <div class="timer-btns">
+                        <button id="startBtn">Start</button>
+                        <button id="pauseBtn">Pause</button>
+                        <button id="resetBtn">Reset</button>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- ================= TODO OVERLAY ================= -->
+
+    <div class="todo-overlay">
+
+        <div class="todo-overlay-content">
+
+            <button id="closeTodoBtn">✖</button>
+
+            <!-- ================= PROGRESS SECTION ================= -->
+
+            <section class="progress-section">
+
+                <div class="progress-card">
+
+                    <h2>📈 Productivity Progress</h2>
+
+                    <div class="progress-bar">
+                        <div id="progressFill"></div>
+                    </div>
+
+                    <p>
+                        <span id="progressText">0%</span>
+                        Tasks Completed
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- ================= TODO SECTION ================= -->
+
+            <section class="todo-section">
+
+                <div class="todo-container">
+
+                    <div class="todo-header">
+                        <h2>📝 Task Manager</h2>
+
+                        <a href="https://tripathianiket0411-droid.github.io/Task-Manager-/" target="_blank">
+                            🚀 Try Task Manager Pro
+                        </a>
+                    </div>
+
+                    <div class="task-form">
+
+                        <input type="text" id="taskInput" placeholder="Enter your task..." class="back">
+
+                        <select id="priority" class="back">
+                            <option value="All">All</option>
+                            <option value="Low">🟢 Low</option>
+                            <option value="Medium">🟡 Medium</option>
+                            <option value="High">🔴 High</option>
+                        </select>
+
+                        <input type="date" id="dueDate" class="back">
+
+                        <button id="addTaskBtn">
+                            <i class="ri-add-line"></i>
+                            Add Task
+                        </button>
+
+                    </div>
+
+                    <div class="summary">
+
+                        <div class="summary-card" data-filter="all">
+                            <p class="summary-hint">👆 Click a card to filter tasks</p>
+                            <h3>Total</h3>
+                            <span id="totalTask">0</span>
+                        </div>
+
+                        <div class="summary-card" data-filter="completed">
+                            <p class="summary-hint">👆 Click a card to filter tasks</p>
+                            <h3>Completed</h3>
+                            <span id="completedTask">0</span>
+                        </div>
+
+                        <div class="summary-card" data-filter="pending">
+                            <p class="summary-hint">👆 Click a card to filter tasks</p>
+                            <h3>Pending</h3>
+                            <span id="pendingTask">0</span>
+                        </div>
+
+                    </div>
+
+                    <ul id="taskList"></ul>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+    <!-- ================= PRODUCTIVITY PROGRESS ================= -->
+
+    <!-- ================= DAILY GOAL ================= -->
+
+
+
+    <!-- ================= GOAL OVERLAY ================= -->
+
+    <div class="goal-overlay">
+
+        <div class="goal-overlay-content">
+
+            <button id="closeGoalBtn">✖</button>
+
+            <section class="goal-section">
+
+                <div class="goal-card">
+
+                    <h2>🎯 Daily Goal</h2>
+
+                    <input type="text" id="goalInput" placeholder="Write your daily goal...">
+
+                    <button id="saveGoalBtn">
+                        Save Goal
+                    </button>
+
+                    <div id="savedGoal"></div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= NOTES OVERLAY ================= -->
+
+    <div class="notes-overlay">
+
+        <div class="notes-overlay-content">
+
+            <button id="closeNotesBtn">✖</button>
+
+            <section class="notes-section">
+
+                <div class="notes-card">
+
+                    <h2>📝 Quick Notes</h2>
+
+                    <textarea id="notes" rows="8" placeholder="Write your important notes here..."></textarea>
+
+                    <button id="saveNotesBtn">
+                        Save Notes
+                    </button>
+
+                    <div id="savedNotes"></div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Productivity Dashboard | Made by Aniket Tripathi
+        </p>
+
+    </footer>
+
+
+
+    <!-- Overlay -->
+    <div class="overlay">
+
+        <!-- Task Form -->
+        <div class="task-modal">
+
+            <h2>Add New Task</h2>
+
+            <form id="taskForm">
+
+                <div class="input-box">
+                    <label>Task Title</label>
+                    <input type="text" placeholder="Enter task title">
+                </div>
+
+                <div class="input-box">
+                    <label>Description</label>
+                    <textarea placeholder="Write task details..."></textarea>
+                </div>
+
+                <div class="row">
+
+                    <div class="input-box">
+                        <label>Priority</label>
+
+                        <select>
+                            <option>Low</option>
+                            <option>Medium</option>
+                            <option>High</option>
+                        </select>
+                    </div>
+
+                    <div class="input-box">
+                        <label>Due Date</label>
+                        <input type="date">
+                    </div>
+
+                </div>
+
+                <div class="btns">
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="save-btn">Save Task</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <!-- ================= DAILY PLANNER OVERLAY ================= -->
+
+    <div class="planner-overlay">
+
+        <div class="planner-overlay-content">
+
+            <button id="closePlannerBtn">
+                <i class="ri-close-line"></i>
+            </button>
+
+            <section class="planner-section">
+
+                <div class="planner-card">
+
+                    <h2>📅 Daily Planner</h2>
+
+                    <p class="planner-subtitle">
+                        Plan your day with time blocks.
+                    </p>
+
+                    <!-- Planner Form -->
+
+                    <div class="planner-form">
+
+                        <input type="text" id="plannerTask" placeholder="Enter Task...">
+
+                        <div class="planner-time">
+
+                            <div class="planner-input">
+
+                                <label>
+                                    Start Time *
+                                </label>
+
+                                <input type="time" id="plannerStart">
+
+                            </div>
+
+                            <div class="planner-input">
+
+                                <label>
+                                    End Time (Optional)
+                                </label>
+
+                                <input type="time" id="plannerEnd">
+
+                            </div>
+
+                        </div>
+
+                        <div class="planner-duration">
+
+                            <label>
+                                Duration (Optional)
+                            </label>
+
+                            <input type="number" id="plannerHours" min="1" placeholder="Hours">
+
+                        </div>
+
+                        <button id="addPlannerBtn">
+
+                            <i class="ri-add-line"></i>
+
+                            Add Plan
+
+                        </button>
+
+                    </div>
+
+                    <!-- Planner List -->
+
+                    <div id="plannerList">
+
+                        <!-- JS -->
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="weather.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
