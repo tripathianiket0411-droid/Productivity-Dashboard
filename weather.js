@@ -77,30 +77,53 @@ async function showPosition(position) {
     state.innerText = `🗺️ State: ${data.principalSubdivision || "Not Available"
         }`;;
 
-    const weatherCodes = {
-        0: "Clear Sky ☀️",
-        1: "Mainly Clear 🌤️",
-        2: "Partly Cloudy ⛅",
-        3: "Cloudy ☁️",
-        45: "Fog 🌫️",
-        48: "Fog 🌫️",
-        51: "Light Drizzle 🌦️",
-        53: "Drizzle 🌦️",
-        55: "Heavy Drizzle 🌧️",
-        61: "Light Rain 🌦️",
-        63: "Rain 🌧️",
-        65: "Heavy Rain 🌧️",
-        71: "Snow ❄️",
-        80: "Rain Showers 🌦️",
-        95: "Thunderstorm ⛈️"
-    };
+ const weatherCodes = {
+    0: "Clear Sky ☀️",
+    1: "Mainly Clear 🌤️",
+    2: "Partly Cloudy ⛅",
+    3: "Cloudy ☁️",
+
+    45: "Fog 🌫️",
+    48: "Depositing Fog 🌫️",
+
+    51: "Light Drizzle 🌦️",
+    53: "Moderate Drizzle 🌦️",
+    55: "Heavy Drizzle 🌧️",
+    56: "Freezing Drizzle 🌧️",
+    57: "Heavy Freezing Drizzle 🌧️",
+
+    61: "Light Rain 🌦️",
+    63: "Rain 🌧️",
+    65: "Heavy Rain 🌧️",
+    66: "Freezing Rain 🌧️",
+    67: "Heavy Freezing Rain 🌧️",
+
+    71: "Light Snow ❄️",
+    73: "Snow ❄️",
+    75: "Heavy Snow ❄️",
+    77: "Snow Grains 🌨️",
+
+    80: "Light Rain Showers 🌦️",
+    81: "Rain Showers 🌧️",
+    82: "Heavy Rain Showers 🌧️",
+
+    85: "Snow Showers ❄️",
+    86: "Heavy Snow Showers ❄️",
+
+    95: "Thunderstorm ⛈️",
+    96: "Thunderstorm with Hail ⛈️🧊",
+    99: "Severe Thunderstorm with Hail ⛈️🧊"
+};
 
     weatherCondition.innerText =
         weatherCodes[weatherData.current.weather_code] || "Unknown Weather";
 
+    console.log("Current Weather:", weatherData.current);
+    console.log("Weather Code:", weatherData.current.weather_code);
+    console.log("Weather Name:", weatherCodes[weatherData.current.weather_code]);
 
     changeWeatherBackground(weatherData.current.weather_code);
-    
+
 
 
 
@@ -114,9 +137,9 @@ getLocation();
 
 function changeWeatherBackground(weatherCode) {
 
-    const currentTime = new Date();  
+    const currentTime = new Date();
     const hour = currentTime.getHours();
-    
+
 
     const weatherBox = document.querySelector(".weather-box");
 
@@ -129,16 +152,14 @@ function changeWeatherBackground(weatherCode) {
     }
 
 
- 
-    if (weatherCode === 95) {
 
-        weatherBox.style.backgroundImage = "url('./Images/thunder-cluds.gif')";
-        return;
-
-    }
+if ([95, 96, 99].includes(weatherCode)) {
+    weatherBox.style.backgroundImage = "url('./Images/thunder-cluds.gif')";
+    return;
+}
 
 
-  
+
     if ([1, 2, 3, 45, 48].includes(weatherCode)) {
 
         weatherBox.style.backgroundImage = "url('./Images/cloud.jpg')";
@@ -147,7 +168,7 @@ function changeWeatherBackground(weatherCode) {
     }
 
 
-   
+
     if (hour >= 5 && hour < 12) {
 
         weatherBox.style.backgroundImage = "url('./Images/morning.jpg')";
@@ -160,7 +181,7 @@ function changeWeatherBackground(weatherCode) {
 
     }
 
-  
+
     else if (hour >= 18 || hour < 5) {
 
         weatherBox.style.backgroundImage = "url('./Images/night.jpg')";
