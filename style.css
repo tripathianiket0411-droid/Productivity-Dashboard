@@ -926,19 +926,19 @@ footer {
         font-size: 16px;
     }
 
-    .task-form {
-        grid-template-columns: 1fr;
-    }
+        .task-form {
+            grid-template-columns: 1fr;
+        }
 
-    #taskList li {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+        #taskList li {
+            flex-direction: column;
+            align-items: flex-start;
+        }
 
-    .task-actions {
-        width: 100%;
-        justify-content: flex-end;
-    }
+        .task-actions {
+            width: 100%;
+            justify-content: flex-end;
+        }
 
     .summary {
         grid-template-columns: 1fr;
@@ -2370,6 +2370,30 @@ footer {
 
 }
 
-.back {
-    background-image: url(./Imagese/thunder-cluds.gif);
+
+@media (max-width: 768px) {
+
+    .task-modal {
+        width: 95%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+    }
+
+    .btns {
+        flex-direction: column;
+    }
+
+    .btns button {
+        width: 100%;
+    }
+
+    .input-box input,
+    .input-box textarea,
+    .input-box select {
+        box-sizing: border-box;
+    }
 }

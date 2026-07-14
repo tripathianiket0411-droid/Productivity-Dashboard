@@ -142,6 +142,7 @@ async function showPosition(position) {
     console.log("Weather Name:", weatherCodes[weatherData.current.weather_code]);
 
     changeWeatherBackground(weatherData.current.weather_code);
+   
 
 
 
