@@ -76,44 +76,50 @@ async function showPosition(position) {
 
     state.innerText = `🗺️ State: ${data.principalSubdivision || "Not Available"
         }`;;
+    const weatherCodes = {
+        0: "Clear Sky ☀️",
 
- const weatherCodes = {
-    0: "Clear Sky ☀️",
-    1: "Mainly Clear 🌤️",
-    2: "Partly Cloudy ⛅",
-    3: "Cloudy ☁️",
+        1: "Mainly Clear 🌤️",
+        2: "Partly Cloudy ⛅",
+        3: "Cloudy ☁️",
 
-    45: "Fog 🌫️",
-    48: "Depositing Fog 🌫️",
+        45: "Fog 🌫️",
+        48: "Depositing Fog 🌫️",
 
-    51: "Light Drizzle 🌦️",
-    53: "Moderate Drizzle 🌦️",
-    55: "Heavy Drizzle 🌧️",
-    56: "Freezing Drizzle 🌧️",
-    57: "Heavy Freezing Drizzle 🌧️",
+        // Drizzle
+        51: "Light Drizzle 🌦️",
+        53: "Moderate Drizzle 🌦️",
+        55: "Dense Drizzle 🌧️",
+        56: "Light Freezing Drizzle 🧊🌦️",
+        57: "Dense Freezing Drizzle 🧊🌧️",
 
-    61: "Light Rain 🌦️",
-    63: "Rain 🌧️",
-    65: "Heavy Rain 🌧️",
-    66: "Freezing Rain 🌧️",
-    67: "Heavy Freezing Rain 🌧️",
+        // Rain
+        61: "Slight Rain 🌦️",
+        63: "Moderate Rain 🌧️",
+        65: "Heavy Rain 🌧️",
+        66: "Light Freezing Rain 🧊🌧️",
+        67: "Heavy Freezing Rain 🧊🌧️",
 
-    71: "Light Snow ❄️",
-    73: "Snow ❄️",
-    75: "Heavy Snow ❄️",
-    77: "Snow Grains 🌨️",
+        // Snow
+        71: "Light Snow ❄️",
+        73: "Moderate Snow ❄️",
+        75: "Heavy Snow ❄️",
+        77: "Snow Grains 🌨️",
 
-    80: "Light Rain Showers 🌦️",
-    81: "Rain Showers 🌧️",
-    82: "Heavy Rain Showers 🌧️",
+        // Rain Showers
+        80: "Slight Rain Showers 🌦️",
+        81: "Moderate Rain Showers 🌧️",
+        82: "Violent Rain Showers ⛈️🌧️",
 
-    85: "Snow Showers ❄️",
-    86: "Heavy Snow Showers ❄️",
+        // Snow Showers
+        85: "Slight Snow Showers 🌨️",
+        86: "Heavy Snow Showers ❄️",
 
-    95: "Thunderstorm ⛈️",
-    96: "Thunderstorm with Hail ⛈️🧊",
-    99: "Severe Thunderstorm with Hail ⛈️🧊"
-};
+        // Thunderstorm
+        95: "Thunderstorm ⛈️",
+        96: "Thunderstorm with Slight Hail ⛈️🧊",
+        99: "Thunderstorm with Heavy Hail ⛈️🧊"
+    };
 
     weatherCondition.innerText =
         weatherCodes[weatherData.current.weather_code] || "Unknown Weather";
@@ -153,10 +159,10 @@ function changeWeatherBackground(weatherCode) {
 
 
 
-if ([95, 96, 99].includes(weatherCode)) {
-    weatherBox.style.backgroundImage = "url('./Images/thunder-cluds.gif')";
-    return;
-}
+    if ([95, 96, 99].includes(weatherCode)) {
+        weatherBox.style.backgroundImage = "url('./Images/thunder-cluds.gif')";
+        return;
+    }
 
 
 
