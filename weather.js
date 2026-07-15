@@ -159,6 +159,7 @@ function changeWeatherBackground(weatherCode) {
 
     const currentTime = new Date();
     const hour = currentTime.getHours();
+    
 
 
     const weatherBox = document.querySelector(".weather-box");
@@ -180,38 +181,42 @@ function changeWeatherBackground(weatherCode) {
 
 
 
-    if ([ 3, 45, 48].includes(weatherCode)) {
+    // if ([ 3, 45, 48].includes(weatherCode)) {
 
-        weatherBox.style.backgroundImage = "url('./Images/cloud.jpg')";
-        return;
+    //     weatherBox.style.backgroundImage = "url('./Images/cloud.jpg')";
+    //     return;
 
-    }
-
-
-
-    if (hour >= 5 && hour < 12) {
-
-        weatherBox.style.backgroundImage = "url('./Images/morning.jpg')";
-
-    }
-
-    else if (hour >= 12 && hour < 18) {
-
-        weatherBox.style.backgroundImage = "url('./Images/background.jpg')";
-
-    }
+    // }
 
 
-    else if (hour >= 18 || hour < 5) {
+if (hour >= 5 && hour < 12) {
 
-        weatherBox.style.backgroundImage = "url('./Images/night.jpg')";
+    // Morning (5 AM - 11:59 AM)
+    weatherBox.style.backgroundImage = "url('./Images/morning.jpg')";
 
-    }
+}
+else if (hour >= 12 && hour < 16) {
 
-    else {
+    // Afternoon (12 PM - 3:59 PM)
+    weatherBox.style.backgroundImage = "url('./Images/background.jpg')";
 
-        weatherBox.style.backgroundImage = "url('./Images/clear.jpg')";
+}
+else if (hour >= 16 && hour < 19) {
 
-    }
+    // Evening (4 PM - 6:59 PM)
+    weatherBox.style.backgroundImage = "url('./Images/evening.jpg   ')";
+
+}
+else if (hour >= 19 || hour < 5) {
+
+    // Night (7 PM - 4:59 AM)
+    weatherBox.style.backgroundImage = "url('./Images/night.jpg')";
+
+}
+else {
+
+    weatherBox.style.backgroundImage = "url('./Images/clear.jpg')";
+
+}
 
 }
